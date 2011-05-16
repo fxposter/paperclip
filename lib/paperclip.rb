@@ -114,7 +114,7 @@ module Paperclip
     end
 
     def each_instance_with_attachment(klass, name)
-      obtain_class_from_class_name(klass).all.each do |instance|
+      class_for(klass).all.each do |instance|
         yield(instance) if instance.send(:"#{name}?")
       end
     end
@@ -133,7 +133,11 @@ module Paperclip
       options[:log]
     end
     
+<<<<<<< HEAD
     def obtain_class_from_class_name(class_name)
+=======
+    def class_for(class_name)
+>>>>>>> 13d51e3120e67b2b8b0b4d550968235dc90defb9
       class_name.split('::').inject(Object) do |klass, partial_class_name|
         klass.const_get(partial_class_name)
       end
